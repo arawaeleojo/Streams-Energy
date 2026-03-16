@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Streams Energy Resources Limited</title>
+    <link rel="icon" href="assets/img/favicon.PNG" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --brand-green: #008A4B;
+            --brand-red: #E31837;
+            --dark-bg: #0a0b0c;
+            --surface-color: #ffffff;
+            --surface-alt: #8debb7;
+            --text-main: #1d1d1f;
+            --text-light: #515154;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--surface-color);
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Syne', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-green);
+            border-radius: 10px;
+        }
+
+        /* --- Dynamic Floating Navbar --- */
+        .navbar {
+            background: transparent !important;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding: 20px 0;
+            width: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #ffffff !important;
+            transition: color 0.4s ease;
+        }
+
+        .navbar-brand span {
+            color: var(--brand-red);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #ffffff !important;
+            margin: 0 12px;
+            position: relative;
+            transition: color 0.4s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--brand-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+            box-shadow: none !important;
+        }
+
+        .navbar-toggler i {
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        /* --- Scrolled Navbar State --- */
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 12px 25px;
+            box-shadow: 0 1px 30px rgba(6, 160, 14, 0.6);
+            width: 92%;
+            max-width: 1200px;
+            top: 15px;
+            border-radius: 12px;
+        }
+
+        .navbar.scrolled .navbar-brand {
+            color: var(--brand-green) !important;
+        }
+
+        .navbar.scrolled .nav-link {
+            color: var(--text-main) !important;
+        }
+
+        .navbar.scrolled .navbar-toggler i {
+            color: var(--text-main);
+        }
+
+        /* --- Mobile Navbar Optimization --- */
+        @media (max-width: 991.98px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar.scrolled {
+                width: 100%;
+                top: 0;
+                border-radius: 0;
+                padding: 15px 20px;
+            }
+
+            .navbar.menu-opened {
+                background: rgba(255, 255, 255, 0.98) !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            .navbar.menu-opened .navbar-brand {
+                color: var(--brand-green) !important;
+            }
+
+            .navbar.menu-opened .nav-link {
+                color: var(--text-main) !important;
+                margin: 10px 0;
+            }
+
+            .navbar.menu-opened .navbar-toggler i {
+                color: var(--text-main);
+            }
+        }
+
+        /* --- Modern UI Buttons --- */
+        .btn-modern {
+            background: var(--brand-green);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--brand-green);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-modern:hover {
+            background: var(--brand-red);
+            border-color: var(--brand-red);
+            color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px rgba(227, 24, 55, 0.3);
+        }
+
+        /* --- Inner Page Hero Section --- */
+        .hero-inner {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--dark-bg);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 11, 12, 0.85), rgba(10, 11, 12, 0.7)), url('https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            animation: kenburns 15s infinite alternate linear;
+            z-index: 1;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            padding-top: 80px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .hero-title span {
+            color: var(--brand-green);
+        }
+
+        /* --- Global Sections --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-alt {
+            background-color: var(--surface-alt);
+        }
+
+        .section-header {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-bg);
+        }
+
+        .section-header span {
+            color: var(--brand-red);
+        }
+
+        .lead-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
+        /* --- Contact Info Cards --- */
+        .contact-card {
+            background: #fff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            height: 100%;
+            /* Ensure cards match formatting nicely */
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 138, 75, 0.1);
+            border-color: rgba(0, 138, 75, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--brand-green);
+            background: rgba(0, 138, 75, 0.1);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-weight: 700;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--brand-green);
+        }
+
+        /* --- Custom Contact Form --- */
+        .form-wrapper {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            background-color: #fcfcfc;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 138, 75, 0.1);
+            border-color: var(--brand-green);
+            background-color: #fff;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-bg);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* --- Map Section --- */
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 450px;
+            background: #e9ecef;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: #050505;
+            color: #fff;
+            padding: 80px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-family: 'Syne';
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--brand-green);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--brand-red);
+        }
+
+        .footer h5 {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--brand-green);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/img/logo (2).png" alt="Streams Energy Logo" height="60" class="me-2 rounded-1">
+            </a>
+            <button class="navbar-toggler" type="button" id="mobileMenuToggle" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                </ul>
+                <a href="contact.html" class="btn-modern">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-inner">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000">
+                Get In <span>Touch</span>
+            </h1>
+            <p class="lead text-white-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                We are ready to support your project with precision, professionalism, and quality.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact-section" class="section-padding bg-alt">
+        <div class="container">
+
+            <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                <h5 class="text-uppercase"
+                    style="color: var(--brand-red); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px;">
+                    Reach Out
+                </h5>
+                <h2 class="section-header mb-3">Let's Discuss Your <span>Requirements</span></h2>
+                <p class="lead-text text-muted mx-auto" style="max-width: 750px;">
+                    Whether you require reliable marine procurement support or technical services for your oil and gas
+                    operations, Streams Energy Resources Limited is ready to deliver value.
+                </p>
+            </div>
+
+            <div class="row gx-5">
+
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="d-flex flex-column gap-4">
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                            <div class="contact-details">
+                                <h4>Corporate Office</h4>
+                                <p>200 Aba Road, opposite Hotel Presidential, Port Harcourt, Rivers State.</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div class="contact-details">
+                                <h4>Call Us</h4>
+                                <p>
+                                    <a href="tel:+2348169525099">+234 816 952 5099</a><br>
+                                    <a href="tel:+2348028802525">+234 802 880 2525</a><br>
+                                    <a href="tel:+2349155419435">+234 915 541 9435</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div class="contact-details">
+                                <h4>Email Us</h4>
+                                <p>
+                                    <a href="mailto:contact@streamsenergy.com">contact@streamsenergy.com</a><br>
+                                    <a href="mailto:enquiry@streamsenergy.com">enquiry@streamsenergy.com</a><br>
+                                    <a href="mailto:emma@streamsenergy.com">emma@streamsenergy.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="form-wrapper h-100">
+                        <h3 class="fw-bold mb-4" style="color: var(--dark-bg); font-family: 'Syne', sans-serif;">Send a
+                            Message</h3>
+                        <form>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="john@company.com" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Organization">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Subject / Material Required</label>
+                                    <input type="text" class="form-control"
+                                        placeholder="e.g., Heavy-Duty Valves Procurement" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Message</label>
+                                    <textarea class="form-control" rows="5"
+                                        placeholder="Provide details regarding specifications, quantities, or project requirements..."
+                                        required></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn-modern w-100 py-3">
+                                        Submit Inquiry <i class="bi bi-send-fill ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="pb-5 bg-alt">
+        <div class="container" data-aos="zoom-in">
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.698054044614!2d7.010196275727192!3d4.821966540582885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cd89fb551c65%3A0xe968257095c25e83!2sHotel%20Presidential!5e0!3m2!1sen!2sng!4v1707833543884!5m2!1sen!2sng"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section> -->
+
+    <footer class="footer mt-0">
+        <div class="container">
+            <div class="row gx-5 mb-5">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="footer-logo d-flex align-items-center mb-3">
+                        <img src="assets/img/logo (2).png" alt="Streams Energy Logo" height="60" class="me-2 rounded-1">
+                    </div>
+                    <p class="text-white-50 pe-lg-5 mb-4 small">An indigenous Nigerian oil and gas procurement and
+                        engineering services company delivering cost-effective, compliant and innovative solutions.</p>
+                </div>
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled text-white-50" style="line-height: 2;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Company Overview</a></li>
+                        <li><a href="services.html">Procurement & Services</a></li>
+                        <li><a href="products.html">Equipment Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled text-white-50 small">
+                        <li class="mb-3 d-flex"><i class="bi bi-geo-alt text-success me-3 fs-5"></i> <span>200, Aba
+                                Road, Opposite Hotel Presidential, Port Harcourt.</span></li>
+                        <li class="mb-3 d-flex align-items-center"><i
+                                class="bi bi-telephone text-success me-3 fs-5"></i> <span>+234 816 952 5099<br> +234 802
+                                880 2525<br> +234 915 541 9435</span></li>
+                        <li class="d-flex align-items-center mt-3"><i class="bi bi-envelope text-success me-3 fs-5"></i>
+                            <span>contact@streamsenergy.com<br> enquiry@streamsenergy.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-4 text-center text-white-50 small"
+                style="border-color: rgba(255,255,255,0.1) !important;">
+                © 2026 Streams Energy Resources Limited. All Rights Reserved. | <a href="http://www.streamsenergy.com"
+                    target="_blank">www.streamsenergy.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            once: false,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-in-out-cubic',
+        });
+
+        // Navbar Scroll & Mobile Menu Toggle Script
+        const navbar = document.getElementById('mainNav');
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        mobileToggle.addEventListener('click', function () {
+            navbar.classList.toggle('menu-opened');
+        });
+    </script>
+</body>
+
+</html>

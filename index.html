@@ -28,6 +28,7 @@
             --text-light: #515154;
         }
 
+        /* --- THE FIX: Prevent horizontal shifting from AOS animations --- */
         html,
         body {
             overflow-x: hidden;
@@ -64,7 +65,7 @@
             border-radius: 10px;
         }
 
-        /* --- Dynamic Floating Navbar --- */
+        /* --- Dynamic Floating Navbar (Desktop Default) --- */
         .navbar {
             background: transparent !important;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -74,6 +75,7 @@
             left: 50%;
             transform: translateX(-50%);
             border-radius: 0;
+            z-index: 1050;
         }
 
         .navbar-brand {
@@ -125,7 +127,7 @@
             transition: color 0.3s;
         }
 
-        /* --- Scrolled Navbar State --- */
+        /* --- Scrolled Navbar State (Desktop Floating Pill) --- */
         .navbar.scrolled {
             background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(15px);
@@ -150,7 +152,7 @@
             color: var(--text-main);
         }
 
-        /* --- Mobile Navbar Optimization --- */
+        /* --- THE FIX: Mobile Navbar Optimization --- */
         @media (max-width: 991.98px) {
             .navbar {
                 padding: 15px 20px;
@@ -225,14 +227,18 @@
             color: var(--brand-green);
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Slider Section --- */
         .hero {
             position: relative;
             height: 100vh;
-            display: flex;
-            align-items: center;
             background-color: var(--dark-bg);
             overflow: hidden;
+        }
+
+        .carousel,
+        .carousel-inner,
+        .carousel-item {
+            height: 100%;
         }
 
         .hero-bg {
@@ -241,8 +247,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(10, 11, 12, 0.7), rgba(10, 11, 12, 0.5)), url('assets/img/hero.jpeg') center/cover no-repeat;
-            animation: kenburns 15s infinite alternate linear;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            animation: kenburns 10s infinite alternate linear;
             z-index: 1;
         }
 
@@ -261,6 +269,7 @@
             z-index: 2;
             color: #fff;
             padding-top: 60px;
+            /* offset for navbar */
         }
 
         .hero-title {
@@ -284,6 +293,41 @@
             border-left: 2px solid var(--brand-green);
             padding-left: 20px;
             line-height: 1.6;
+        }
+
+        /* Hero Text Slider Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .carousel-item.active .hero-title {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .carousel-item.active .hero-subtitle {
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        .carousel-item.active .hero-btn-group {
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* Carousel Navigation Controls UI */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+            z-index: 10;
         }
 
         /* --- Global Sections --- */
@@ -319,10 +363,6 @@
             font-size: 1.1rem;
             color: var(--text-light);
             font-weight: 400;
-        }
-
-        .bg-dark-section .lead-text {
-            color: rgba(255, 255, 255, 0.7);
         }
 
         /* --- Sleek Value / QICS Cards --- */
@@ -416,56 +456,6 @@
             color: #fff;
         }
 
-        /* --- Portfolio Image Cards (NEW) --- */
-        .portfolio-card {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            height: 320px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-
-        .portfolio-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .portfolio-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px 20px 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.64), transparent);
-            color: #fff;
-            transition: padding-bottom 0.4s ease;
-        }
-
-        .portfolio-card:hover .portfolio-overlay {
-            padding-bottom: 30px;
-        }
-
-        .portfolio-title {
-            font-family: 'Syne', sans-serif;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .portfolio-subtitle {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0;
-        }
-
         /* --- Why Choose Us Cards --- */
         .why-card {
             transition: all 0.3s ease;
@@ -528,6 +518,7 @@
             font-weight: 700;
             color: #fff;
         }
+
         /* --- Footer --- */
         .footer {
             background: #050505;
@@ -571,7 +562,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/img/logo (2).png" alt="Streams Energy Logo" height="60" class="me-2 rounded-1">
             </a>
             <button class="navbar-toggler" type="button" id="mobileMenuToggle" data-bs-toggle="collapse"
@@ -580,34 +571,100 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
                 </ul>
-                <a href="#cta" class="btn-modern">Contact Us</a>
+                <a href="contact.html" class="btn-modern">Contact Us</a>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <div class="row">
-                <div class="col-lg-10">
-                    <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000">
-                        Specialized <span>Marine & Offshore</span> Procurement
-                    </h1>
-                    <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                        We specialize in the strategic sourcing and supply of critical marine materials, vessels, and
-                        offshore equipment to keep your marine, energy, and construction projects running safely and
-                        efficiently.
-                    </p>
-                    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                        <a href="#products" class="btn-modern me-4">Explore Our Equipment</a>
+    <section id="home" class="hero p-0">
+        <div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel" data-bs-pause="false"
+            data-bs-interval="6000">
+
+            <div class="carousel-inner h-100">
+
+                <div class="carousel-item active h-100">
+                    <div class="hero-bg"
+                        style="background: linear-gradient(rgba(10, 11, 12, 0.7), rgba(10, 11, 12, 0.5)), url('assets/img/hero.jpeg');">
+                    </div>
+                    <div class="container hero-content d-flex align-items-center h-100">
+                        <div class="row w-100">
+                            <div class="col-lg-10">
+                                <h1 class="hero-title">
+                                    Specialized <span>Marine & Offshore</span> Procurement
+                                </h1>
+                                <p class="hero-subtitle">
+                                    We specialize in the strategic sourcing and supply of critical marine materials,
+                                    vessels, and offshore equipment to keep your energy and construction projects
+                                    running safely and efficiently.
+                                </p>
+                                <div class="hero-btn-group">
+                                    <a href="products.html" class="btn-modern me-4">Explore Our Equipment</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="carousel-item h-100">
+                    <div class="hero-bg"
+                        style="background: linear-gradient(rgba(1, 75, 41, 0.8), rgba(1, 61, 34, 0.8)), url('assets/img/hero2.jpeg');">
+                    </div>
+                    <div class="container hero-content d-flex align-items-center h-100">
+                        <div class="row w-100">
+                            <div class="col-lg-10">
+                                <h1 class="hero-title">
+                                    Comprehensive <span>Engineering</span> Support
+                                </h1>
+                                <p class="hero-subtitle">
+                                    Providing structured EPC procurement support, technical material reviews, pipeline
+                                    installation solutions, and heavy structural fabrication for your operations.
+                                </p>
+                                <div class="hero-btn-group">
+                                    <a href="services.html" class="btn-modern me-4">View Our Services</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item h-100">
+                    <div class="hero-bg"
+                        style="background: linear-gradient(rgba(10, 11, 12, 0.75), rgba(10, 11, 12, 0.65)), url('assets/img/hero3.jpeg');">
+                    </div>
+                    <div class="container hero-content d-flex align-items-center h-100">
+                        <div class="row w-100">
+                            <div class="col-lg-10">
+                                <h1 class="hero-title">
+                                    Uncompromising <span>Quality & Compliance</span>
+                                </h1>
+                                <p class="hero-subtitle">
+                                    Delivering services at par with multinational standards. We are fully aligned with
+                                    the NOGICD Act, ensuring a 100% indigenous workforce and reliable vendor
+                                    partnerships.
+                                </p>
+                                <div class="hero-btn-group">
+                                    <a href="about.html" class="btn-modern me-4">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </section>
 
@@ -615,9 +672,9 @@
         <div class="container">
             <div class="row align-items-center gx-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                    <img src="assets/img/hero2.jpeg"
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop"
                         class="img-fluid rounded shadow-sm w-100" style="max-height: 480px; object-fit: cover;"
-                        alt="Marine and offshore equipment at shipyard">
+                        alt="Industrial pipes">
                 </div>
                 <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
                     <h5 class="text-uppercase"
@@ -625,16 +682,16 @@
                         Company Overview</h5>
                     <h2 class="section-header">Bridging <span>Supply Gaps.</span></h2>
 
-                    <p class="mb-3">Streams Energy Resources Limited is a 100% indigenous company,
-                        established to deliver dependable procurement and technical support services across Nigeria’s
-                        marine and energy sectors. Our operations are guided by professionalism, ethical business
-                        conduct and a strong belief that doing the right thing from the start creates sustainable
-                        growth.</p>
+                    <p class="mb-3">Streams Energy Resources Limited is a 100% indigenous oil and gas
+                        services company, established to deliver dependable procurement and technical support services
+                        across Nigeria’s energy sector and beyond. Our operations are guided by professionalism, ethical
+                        business conduct and a strong belief that doing the right thing from the start creates
+                        sustainable growth.</p>
 
-                    <p class="mb-0">Our core strength lies in strategic procurement and supply chain
-                        management, supported by installation, fabrication, maintenance and technical project support
-                        services. We enhance operational performance through quality-driven processes, vendor
-                        reliability and strict compliance with industry standards.</p>
+                    <p class="mb-0">Our core strength lies in strategic oil and gas procurement and supply
+                        chain management, supported by installation, fabrication, maintenance and technical project
+                        support services. We enhance operational performance through quality-driven processes,
+                        vendor reliability and strict compliance with industry standards.</p>
                 </div>
             </div>
         </div>
@@ -700,24 +757,23 @@
                 <h5 class="text-uppercase"
                     style="color: var(--brand-green); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px;">Core
                     Focus</h5>
-                <h2 class="section-header">Marine & <span>Energy Support</span></h2>
-                <p class="lead-text mx-auto" style="max-width: 700px;">Our core strength lies in strategic procurement
-                    and supply chain management, supported by installation, fabrication, maintenance and technical
-                    project support services.</p>
+                <h2 class="section-header">What We <span>Do</span></h2>
+                <p class="lead-text mx-auto" style="max-width: 700px;">Our core strength lies in strategic oil and gas
+                    procurement and supply chain management, supported by installation, fabrication, maintenance and
+                    technical project support services.</p>
             </div>
 
             <div class="row g-4">
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-card border">
-                        <div class="icon-wrapper"><i class="bi bi-water"></i></div>
-                        <h3 class="h5 fw-bold mb-3">Marine Procurement & Supply</h3>
-                        <p class="text-muted mb-4 text-sm">We provide expert sourcing for critical offshore and marine
-                            components, strict compliance with industry standards, and marine & vessel personnel
-                            support.</p>
+                        <div class="icon-wrapper"><i class="bi bi-box-seam"></i></div>
+                        <h3 class="h5 fw-bold mb-3">Strategic Procurement</h3>
+                        <p class="text-muted mb-4 text-sm">We enhance operational performance through quality-driven
+                            processes, vendor reliability and strict compliance with industry standards.</p>
                         <ul class="custom-list">
-                            <li>Marine & Vessel Servicing Personnel</li>
-                            <li>Heavy-Duty Valves (GATE, GLOBE, BALL, CHECK)</li>
-                            <li>Structural Steel Materials & Piling Sheets</li>
+                            <li>Valves (GATE, GLOBE, BALL, CHECK)</li>
+                            <li>Flanges, Elbows, Tees & Fittings</li>
+                            <li>Structural Steel Materials & Galvanized Pipes</li>
                             <li>Line Pipes, Drilling Tubes & Casings</li>
                         </ul>
                     </div>
@@ -734,83 +790,6 @@
                             <li>Pipeline Installation Support</li>
                             <li>Mechanical & Structural Installation</li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="products" class="section-padding bg-dark-section">
-        <div class="container">
-            <div class="text-center mb-5 pb-3" data-aos="fade-up">
-                <h5 class="text-uppercase"
-                    style="color: var(--brand-green); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px;">
-                    Procurement Scope</h5>
-                <h2 class="section-header">Materials & <span>Equipment</span></h2>
-                <p class="lead-text mx-auto" style="max-width: 650px;">We source and supply a comprehensive range of
-                    high-grade industrial, marine, and oilfield materials built to withstand the harshest offshore
-                    environments.</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="portfolio-card">
-                        <img src="assets/img/ballvalves.jpeg"
-                            alt="Heavy Duty Industrial Valves">
-                        <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Heavy-Duty Valves</h4>
-                            <p class="portfolio-subtitle">Gate, Globe, Ball, and Check Valves.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio-card">
-                        <img src="assets/img/galvanizedpipes.PNG"
-                            alt="Line and Galvanized Pipes">
-                        <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Industrial Pipes</h4>
-                            <p class="portfolio-subtitle">Line Pipes, Drilling Tubes, & Galvanized Pipes.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="portfolio-card">
-                        <img src="assets/img/elbows.jpeg"
-                            alt="Marine Mooring Chains">
-                        <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Elbows</h4>
-                            <p class="portfolio-subtitle">Elbows, Tees, Insulation Joints, and Fasteners.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="portfolio-card">
-                        <img src="assets/img/pipes.jpeg"
-                            alt="Structural Steel Materials">
-                        <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Structural Steel Pipes</h4>
-                            <p class="portfolio-subtitle">Piling Sheets, H-Beams, and structural metals.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="portfolio-card">
-                        <img src="assets/img/insulationjoints.PNG"
-                            alt="Flanges and Metal Fittings">
-                        <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Insulation Joints</h4>
-                            <p class="portfolio-subtitle">Elbows, Tees, Insulation Joints, and Fasteners.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="portfolio-card">
-                        <img src="assets/img/wiremesh.jpg"
-                            alt="Wire Mesh and Gratings">
-                        <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Wire Mesh & Gratings</h4>
-                            <p class="portfolio-subtitle">Heavy-duty gratings and industrial mesh rods.</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -835,8 +814,8 @@
                     </ul>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <img src="assets/img/hero3.jpeg"
-                        class="img-fluid rounded shadow-lg" alt="Professional marine engineering team on site">
+                    <img src="assets/img/hero3.jpeg" class="img-fluid rounded shadow-lg"
+                        alt="Professional marine engineering team on site">
                 </div>
             </div>
         </div>
@@ -846,8 +825,9 @@
         <div class="container">
             <div class="text-center mb-5 pb-3" data-aos="fade-up">
                 <h2 class="section-header">Why Choose <span>Streams Energy</span></h2>
-                <p class="lead-text mx-auto" style="max-width: 650px;">We demonstrate that indigenous companies can
-                    deliver services at par with multinational standards while maintaining global compliance.</p>
+                <p class="lead-text mx-auto" style="max-width: 650px;">Our reputation is built on what we deliver and
+                    how we deliver it. We demonstrate that indigenous companies can deliver services at par with
+                    multinational standards while maintaining global compliance.</p>
             </div>
 
             <div class="row g-4">
@@ -924,10 +904,10 @@
                 <div class="col-lg-3 mb-4 mb-lg-0">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled text-white-50" style="line-height: 2;">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">Company Overview</a></li>
-                        <li><a href="#services">Procurement & Services</a></li>
-                        <li><a href="#products">Equipment Portfolio</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Company Overview</a></li>
+                        <li><a href="services.html">Procurement & Services</a></li>
+                        <li><a href="products.html">Equipment Portfolio</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
