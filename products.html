@@ -74,6 +74,7 @@
             left: 50%;
             transform: translateX(-50%);
             border-radius: 0;
+            z-index: 1050;
         }
 
         .navbar-brand {
@@ -203,63 +204,31 @@
             background: var(--brand-red);
             border-color: var(--brand-red);
             color: #fff;
-            transform: translateY(-4px);
-            box-shadow: 0 15px 25px rgba(227, 24, 55, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(227, 24, 55, 0.2);
         }
 
         .btn-light-outline {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            text-decoration: none;
+            background: transparent;
             color: #fff;
-            border: 2px solid #fff;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 700;
+            border: 1px solid #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.85rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-light-outline:hover {
             background: #fff;
             color: var(--brand-green);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-cta-solid {
-            background: #fff;
-            color: var(--dark-bg);
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.85rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid #fff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-cta-solid:hover {
-            background: var(--brand-green);
-            border-color: var(--brand-green);
-            color: #fff;
-            transform: translateY(-4px);
-            box-shadow: 0 15px 25px rgba(0, 138, 75, 0.4);
-        }
-
-        /* --- Inner Page Hero Section --- */
+        /* --- Hero Section --- */
         .hero-inner {
             position: relative;
             height: 60vh;
@@ -275,8 +244,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Industrial Pipes/Valves Background */
-            background: linear-gradient(rgba(10, 11, 12, 0.85), rgba(10, 11, 12, 0.65)), url('assets/img/hero.jpeg') center/cover no-repeat;
+            background: linear-gradient(rgba(10, 11, 12, 0.7), rgba(10, 11, 12, 0.5)), url('assets/img/hero.jpeg') center/cover no-repeat;
             animation: kenburns 15s infinite alternate linear;
             z-index: 1;
         }
@@ -320,20 +288,11 @@
             background-color: var(--surface-alt);
         }
 
-        .bg-dark-section {
-            background-color: var(--dark-bg);
-            color: #fff;
-        }
-
         .section-header {
             font-size: clamp(2rem, 3vw, 2.8rem);
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--dark-bg);
-        }
-
-        .bg-dark-section .section-header {
-            color: #fff;
         }
 
         .section-header span {
@@ -346,14 +305,15 @@
             font-weight: 400;
         }
 
-        /* --- Catalog / Product Cards (Sleek UI) --- */
+        /* --- Catalog / Product Cards (Enhanced Pop-up UI) --- */
         .catalog-card {
             background: #fff;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            /* Stronger default shadow to pop from background */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: none;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -361,8 +321,8 @@
 
         .catalog-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 138, 75, 0.1);
-            border-color: rgba(0, 138, 75, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 138, 75, 0.25);
+            /* Green tinted glow on hover */
         }
 
         .catalog-img-wrapper {
@@ -377,7 +337,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         .catalog-card:hover .catalog-img-wrapper img {
@@ -464,7 +424,7 @@
         /* --- Call To Action Section (Parallax) --- */
         .cta-section {
             position: relative;
-            background: linear-gradient(rgba(0, 138, 75, 0.88), rgba(0, 90, 49, 0.95)), url('https://images.unsplash.com/photo-1494412519320-ce1e22f28329?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(1, 75, 41, 0.8), rgba(1, 61, 34, 0.95)), url('assets/img/hero2.jpeg ') center/cover no-repeat fixed;
             color: #fff;
             padding: 100px 0;
             text-align: center;
@@ -577,8 +537,7 @@
                     <div class="catalog-card">
                         <div class="catalog-img-wrapper">
                             <span class="catalog-badge">Marine Grade</span>
-                            <img src="https://images.unsplash.com/photo-1584903588265-4f40f0988cc6?q=80&w=800&auto=format&fit=crop"
-                                alt="Heavy-Duty Valves">
+                            <img src="assets/img/ballvalves.jpeg" alt="Heavy-Duty Valves">
                         </div>
                         <div class="catalog-content">
                             <h4>Heavy-Duty Valves</h4>
@@ -595,8 +554,7 @@
                     <div class="catalog-card">
                         <div class="catalog-img-wrapper">
                             <span class="catalog-badge">High Pressure</span>
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop"
-                                alt="Line Pipes and Galvanized Pipes">
+                            <img src="assets/img/galvanizedpipes.PNG" alt="Line Pipes and Galvanized Pipes">
                         </div>
                         <div class="catalog-content">
                             <h4>Pipes & Tubulars</h4>
@@ -612,14 +570,13 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="catalog-card">
                         <div class="catalog-img-wrapper">
-                            <span class="catalog-badge">Offshore</span>
-                            <img src="https://images.unsplash.com/photo-1605335198889-8d76f8072cc4?q=80&w=800&auto=format&fit=crop"
-                                alt="Marine Mooring Chains">
+                            <span class="catalog-badge">Connections</span>
+                            <img src="assets/img/elbows.jpeg" alt="Elbows & Fittings">
                         </div>
                         <div class="catalog-content">
-                            <h4>Marine Mooring & Chains</h4>
-                            <p>Supply of critical vessel components, including heavy-duty anchors, shackles, and
-                                offshore mooring chains for port and deep-sea operations.</p>
+                            <h4>Elbows & Fittings</h4>
+                            <p>Comprehensive supply of Flanges, Elbows, Tees, Fasteners, and other critical joints to
+                                guarantee seamless and leak-proof structural connections.</p>
                             <div class="catalog-footer">
                                 <a href="#cta" class="catalog-link">Request Quote <i class="bi bi-arrow-right"></i></a>
                             </div>
@@ -631,8 +588,7 @@
                     <div class="catalog-card">
                         <div class="catalog-img-wrapper">
                             <span class="catalog-badge">Structural</span>
-                            <img src="https://images.unsplash.com/photo-1533285960682-1200b37265a6?q=80&w=800&auto=format&fit=crop"
-                                alt="Structural Steel and Piling Sheets">
+                            <img src="assets/img/pipes.jpeg" alt="Structural Steel Materials">
                         </div>
                         <div class="catalog-content">
                             <h4>Structural Steel</h4>
@@ -648,14 +604,13 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="catalog-card">
                         <div class="catalog-img-wrapper">
-                            <span class="catalog-badge">Connections</span>
-                            <img src="https://images.unsplash.com/photo-1559825481-12a05cc00344?q=80&w=800&auto=format&fit=crop"
-                                alt="Flanges and Metal Fittings">
+                            <span class="catalog-badge">Isolation</span>
+                            <img src="assets/img/insulationjoints.PNG" alt="Insulation Joints">
                         </div>
                         <div class="catalog-content">
-                            <h4>Flanges & Fittings</h4>
-                            <p>Comprehensive supply of Flanges, Elbows, Tees, Fasteners, and Insulation Joints to
-                                guarantee seamless and leak-proof structural connections.</p>
+                            <h4>Insulation Joints</h4>
+                            <p>Procurement of critical pipeline Insulation Joints and metal fittings to prevent
+                                corrosion and ensure total electrical isolation.</p>
                             <div class="catalog-footer">
                                 <a href="#cta" class="catalog-link">Request Quote <i class="bi bi-arrow-right"></i></a>
                             </div>
@@ -667,8 +622,7 @@
                     <div class="catalog-card">
                         <div class="catalog-img-wrapper">
                             <span class="catalog-badge">Hardware</span>
-                            <img src="https://images.unsplash.com/photo-1506161272635-4302d99d9b62?q=80&w=800&auto=format&fit=crop"
-                                alt="Wire Mesh and Gratings">
+                            <img src="assets/img/wiremesh.jpg" alt="Wire Mesh and Gratings">
                         </div>
                         <div class="catalog-content">
                             <h4>Wire Mesh & Gratings</h4>
@@ -717,12 +671,8 @@
             </p>
 
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="mailto:contact@streamsenergy.com" class="btn-light-outline">
-                    <i class="bi bi-card-list"></i> Request a Quote
-                </a>
-                <a href="tel:+2348169525099" class="btn-cta-solid">
-                    <i class="bi bi-telephone-fill"></i> Contact Sales
-                </a>
+                <a href="mailto:contact@streamsenergy.com" class="btn-light-outline me-3">Email Us Today</a>
+                <a href="tel:+2348169525099" class="btn-modern bg-white text-dark border-white">Call Now</a>
             </div>
         </div>
     </section>
