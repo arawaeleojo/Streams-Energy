@@ -250,7 +250,7 @@
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
-            animation: kenburns 10s infinite alternate linear;
+            animation: kenburns 25s infinite alternate linear;
             z-index: 1;
         }
 
@@ -365,6 +365,10 @@
             font-weight: 400;
         }
 
+        .bg-dark-section .lead-text {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         /* --- Sleek Value / QICS Cards --- */
         .value-card {
             background: #fff;
@@ -456,6 +460,56 @@
             color: #fff;
         }
 
+        /* --- Portfolio Image Cards (Products) --- */
+        .portfolio-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 320px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 20px 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.64), transparent);
+            color: #fff;
+            transition: padding-bottom 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            padding-bottom: 30px;
+        }
+
+        .portfolio-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .portfolio-subtitle {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
         /* --- Why Choose Us Cards --- */
         .why-card {
             transition: all 0.3s ease;
@@ -508,7 +562,7 @@
         /* --- Call To Action Section (Parallax) --- */
         .cta-section {
             position: relative;
-            background: linear-gradient(rgba(1, 75, 41, 0.8), rgba(1, 61, 34, 0.95)), url('assets/img/hero2.jpeg ') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(1, 75, 41, 0.8), rgba(1, 61, 34, 0.95)), url('assets/img/hero2.jpeg') center/cover no-repeat fixed;
             color: #fff;
             padding: 100px 0;
             text-align: center;
@@ -562,7 +616,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="assets/img/logo (2).png" alt="Streams Energy Logo" height="60" class="me-2 rounded-1">
             </a>
             <button class="navbar-toggler" type="button" id="mobileMenuToggle" data-bs-toggle="collapse"
@@ -672,9 +726,8 @@
         <div class="container">
             <div class="row align-items-center gx-5">
                 <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop"
-                        class="img-fluid rounded shadow-sm w-100" style="max-height: 480px; object-fit: cover;"
-                        alt="Industrial pipes">
+                    <img src="assets/img/hero2.jpeg" class="img-fluid rounded shadow-sm w-100"
+                        style="max-height: 480px; object-fit: cover;" alt="Marine and offshore equipment at shipyard">
                 </div>
                 <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
                     <h5 class="text-uppercase"
@@ -690,8 +743,8 @@
 
                     <p class="mb-0">Our core strength lies in strategic oil and gas procurement and supply
                         chain management, supported by installation, fabrication, maintenance and technical project
-                        support services. We enhance operational performance through quality-driven processes,
-                        vendor reliability and strict compliance with industry standards.</p>
+                        support services. We enhance operational performance through quality-driven processes, vendor
+                        reliability and strict compliance with industry standards.</p>
                 </div>
             </div>
         </div>
@@ -757,7 +810,7 @@
                 <h5 class="text-uppercase"
                     style="color: var(--brand-green); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px;">Core
                     Focus</h5>
-                <h2 class="section-header">What We <span>Do</span></h2>
+                <h2 class="section-header">Marine & <span>Energy Support</span></h2>
                 <p class="lead-text mx-auto" style="max-width: 700px;">Our core strength lies in strategic oil and gas
                     procurement and supply chain management, supported by installation, fabrication, maintenance and
                     technical project support services.</p>
@@ -771,7 +824,7 @@
                         <p class="text-muted mb-4 text-sm">We enhance operational performance through quality-driven
                             processes, vendor reliability and strict compliance with industry standards.</p>
                         <ul class="custom-list">
-                            <li>Valves (GATE, GLOBE, BALL, CHECK)</li>
+                            <li>Valves (BALL, CHOKE, CHECK, GLOVE, GATE, ETC)</li>
                             <li>Flanges, Elbows, Tees & Fittings</li>
                             <li>Structural Steel Materials & Galvanized Pipes</li>
                             <li>Line Pipes, Drilling Tubes & Casings</li>
@@ -790,6 +843,77 @@
                             <li>Pipeline Installation Support</li>
                             <li>Mechanical & Structural Installation</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section-padding bg-dark-section">
+        <div class="container">
+            <div class="text-center mb-5 pb-3" data-aos="fade-up">
+                <h5 class="text-uppercase"
+                    style="color: var(--brand-green); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px;">
+                    Procurement Scope</h5>
+                <h2 class="section-header">Materials & <span>Equipment</span></h2>
+                <p class="lead-text mx-auto" style="max-width: 650px;">We source and supply a comprehensive range of
+                    high-grade industrial, marine, and oilfield materials built to withstand the harshest offshore
+                    environments.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-card">
+                        <img src="assets/img/ballvalves.jpeg" alt="Heavy Duty Industrial Valves">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-title">Heavy-Duty Valves</h4>
+                            <p class="portfolio-subtitle">Gate, Globe, Ball, and Check Valves.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-card">
+                        <img src="assets/img/galvanizedpipes.PNG" alt="Line and Galvanized Pipes">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-title">Industrial Pipes</h4>
+                            <p class="portfolio-subtitle">Line Pipes, Drilling Tubes, & Galvanized Pipes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-card">
+                        <img src="assets/img/elbows.jpeg" alt="Marine Mooring Chains">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-title">Elbows & Fittings</h4>
+                            <p class="portfolio-subtitle">Elbows, Tees, Insulation Joints, and Fasteners.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portfolio-card">
+                        <img src="assets/img/pipes.jpeg" alt="Structural Steel Materials">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-title">Structural Steel Pipes</h4>
+                            <p class="portfolio-subtitle">Piling Sheets, H-Beams, and structural metals.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="portfolio-card">
+                        <img src="assets/img/insulationjoints.PNG" alt="Flanges and Metal Fittings">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-title">Insulation Joints</h4>
+                            <p class="portfolio-subtitle">Elbows, Tees, Insulation Joints, and Fasteners.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="portfolio-card">
+                        <img src="assets/img/wiremesh.jpg" alt="Wire Mesh and Gratings">
+                        <div class="portfolio-overlay">
+                            <h4 class="portfolio-title">Wire Mesh & Gratings</h4>
+                            <p class="portfolio-subtitle">Heavy-duty gratings and industrial mesh rods.</p>
+                        </div>
                     </div>
                 </div>
             </div>
