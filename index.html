@@ -112,7 +112,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after {
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
         }
 
@@ -152,7 +153,7 @@
             color: var(--text-main);
         }
 
-        /* --- THE FIX: Mobile Navbar Optimization --- */
+        /* --- Mobile Navbar Optimization --- */
         @media (max-width: 991.98px) {
             .navbar {
                 padding: 15px 20px;
@@ -269,7 +270,6 @@
             z-index: 2;
             color: #fff;
             padding-top: 60px;
-            /* offset for navbar */
         }
 
         .hero-title {
@@ -323,7 +323,6 @@
             opacity: 0;
         }
 
-        /* Carousel Navigation Controls UI */
         .carousel-control-prev,
         .carousel-control-next {
             width: 5%;
@@ -468,6 +467,7 @@
             height: 320px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
             cursor: pointer;
+            background: #fff;
         }
 
         .portfolio-card img {
@@ -616,7 +616,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/img/logo (2).png" alt="Streams Energy Logo" height="60" class="me-2 rounded-1">
             </a>
             <button class="navbar-toggler" type="button" id="mobileMenuToggle" data-bs-toggle="collapse"
@@ -735,16 +735,17 @@
                         Company Overview</h5>
                     <h2 class="section-header">Bridging <span>Supply Gaps.</span></h2>
 
-                    <p class="mb-3">Streams Energy Resources Limited is a 100% indigenous oil and gas
-                        services company, established to deliver dependable procurement and technical support services
-                        across Nigeria’s energy sector and beyond. Our operations are guided by professionalism, ethical
-                        business conduct and a strong belief that doing the right thing from the start creates
-                        sustainable growth.</p>
+                    <p class="mb-3">Streams Energy Resources Ltd grows by satisfying clients' needs with high-quality
+                        products and services, using our state-of-the-art equipment, skilled personnel, and high
+                        business management policies. We provide our clients and partners high-quality steel products
+                        from reputable manufacturers with competitive pricing, timely delivery, and quality assurance,
+                        ensuring they meet strict industry standards.</p>
 
-                    <p class="mb-0">Our core strength lies in strategic oil and gas procurement and supply
-                        chain management, supported by installation, fabrication, maintenance and technical project
-                        support services. We enhance operational performance through quality-driven processes, vendor
-                        reliability and strict compliance with industry standards.</p>
+                    <p class="mb-0">Our steel products—such as line pipes, drilling tubes & casings, valves, insulation
+                        joints, flanges, elbows, tees, and other fittings—are used in the daily operations of the oil
+                        and gas industries for pipeline construction, piping, drilling, and structural development.
+                        Furthermore, piling sheets, galvanized pipes, wire mesh, gratings, and rods are essential
+                        materials we supply for construction activities.</p>
                 </div>
             </div>
         </div>
@@ -824,10 +825,11 @@
                         <p class="text-muted mb-4 text-sm">We enhance operational performance through quality-driven
                             processes, vendor reliability and strict compliance with industry standards.</p>
                         <ul class="custom-list">
-                            <li>Valves (BALL, CHOKE, CHECK, GLOVE, GATE, ETC)</li>
-                            <li>Flanges, Elbows, Tees & Fittings</li>
-                            <li>Structural Steel Materials & Galvanized Pipes</li>
-                            <li>Line Pipes, Drilling Tubes, Casings and so much more</li>
+                            <li>VALVES (check valve, choke valve, gate valve, ball balve, safety valve, relief alves, needle valves, butterefly valves,
+                            etc)</li>
+                            <li>Fittings (Flanges, reducers, bolts and nuts, tees, elbow, Y-Strainer, insulation joints etc)</li>
+                            <li>PIPES (Line pipes, drilling pipes , casing pipes, galvanised pipes, floating hose etc. )</li>
+                            <li>Line pipes ( Plain pipes, coated pipes of various kinds and sizes..) and so much more</li>
                         </ul>
                     </div>
                 </div>
@@ -864,55 +866,61 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="portfolio-card">
-                        <img src="assets/img/ballvalves.jpeg" alt="Heavy Duty Industrial Valves">
+                        <img src="assets/img/linepipes.jpeg" alt="Pipes & Tubulars">
                         <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Heavy-Duty Valves</h4>
-                            <p class="portfolio-subtitle">Gate, Globe, Ball, and Check Valves.</p>
+                            <h4 class="portfolio-title">Pipes & Tubulars</h4>
+                            <p class="portfolio-subtitle">Line pipes (plain & coated), drilling pipes, casing pipes,
+                                floating hoses, etc.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="portfolio-card">
-                        <img src="assets/img/galvanizedpipes.PNG" alt="Line and Galvanized Pipes">
+                        <img src="assets/img/ballvalves.jpeg" alt="Industrial Valves">
                         <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Industrial Pipes</h4>
-                            <p class="portfolio-subtitle">Line Pipes, Drilling Tubes, & Galvanized Pipes.</p>
+                            <h4 class="portfolio-title">Industrial Valves</h4>
+                            <p class="portfolio-subtitle">Check, choke, gate, ball, safety, relief, needle,
+                                butterfly valves, etc.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="portfolio-card">
-                        <img src="assets/img/elbows.jpeg" alt="Marine Mooring Chains">
+                        <img src="assets/img/flanges.jpeg" alt="Fittings">
                         <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Elbows & Fittings</h4>
-                            <p class="portfolio-subtitle">Elbows, Tees, Insulation Joints, and Fasteners.</p>
+                            <h4 class="portfolio-title">Fittings</h4>
+                            <p class="portfolio-subtitle">Flanges, reducers, bolts and nuts, tees, elbows,
+                                Y-Strainers, etc.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="portfolio-card">
-                        <img src="assets/img/pipes.jpeg" alt="Structural Steel Materials">
+                        <img src="assets/img/insulationjoints.PNG" alt="Insulation Joints">
                         <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Structural Steel Pipes</h4>
-                            <p class="portfolio-subtitle">Piling Sheets, H-Beams, and structural metals.</p>
+                            <h4 class="portfolio-title">Insulation Joints</h4>
+                            <p class="portfolio-subtitle">High-quality insulation joints for pipeline protection and
+                                safety.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="portfolio-card">
-                        <img src="assets/img/insulationjoints.PNG" alt="Flanges and Metal Fittings">
+                        <img src="assets/img/galvanizedpipes.PNG" alt="Galvanized Pipes">
                         <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Insulation Joints</h4>
-                            <p class="portfolio-subtitle">Elbows, Tees, Insulation Joints, and Fasteners.</p>
+                            <h4 class="portfolio-title">Galvanized Pipes</h4>
+                            <p class="portfolio-subtitle">Durable galvanized pipes essential for structural construction
+                                activities.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                     <div class="portfolio-card">
-                        <img src="assets/img/wiremesh.jpg" alt="Wire Mesh and Gratings">
+                        <img src="assets/img/wiremesh.jpg" alt="Construction Materials">
                         <div class="portfolio-overlay">
-                            <h4 class="portfolio-title">Wire Mesh & Gratings</h4>
-                            <p class="portfolio-subtitle">Heavy-duty gratings and industrial mesh rods.</p>
+                            <h4 class="portfolio-title">Construction Materials</h4>
+                            <p class="portfolio-subtitle">Piling sheets, wire mesh, gratings,steel rods, etc for
+                                structural development.</p>
                         </div>
                     </div>
                 </div>
